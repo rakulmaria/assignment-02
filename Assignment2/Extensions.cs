@@ -9,4 +9,6 @@ public static class Extensions
     public static int WordCount(this string str) =>
         Regex.Replace(str, "[0-9]",string.Empty)
         .Split(new[] { ' ', '.', '?' }, StringSplitOptions.RemoveEmptyEntries).Length;
+
+    
 }
