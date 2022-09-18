@@ -24,9 +24,9 @@ public class Student
 
     public override string ToString() 
     {
-        return "Name: " + name + "\nSurname: " + surname + "\nStatus: " + 
-            status + "\nStart Date: " + startDate + "\nEnd date: " + 
-            endDate + "\nGraduation Date: " + graduationDate;
+        return "Id: " + id + " Name: " + name + " Surname: " + surname + " Status: " + 
+            status + " Start date: " + startDate + " End date: " + 
+            endDate + " Graduation date: " + graduationDate;
     }
 
 }
