@@ -4,7 +4,7 @@ using FluentAssertions;
 
 public class StudentTest
 {
-    [Fact]
+    /*[Fact]
     public void Test1()
     {
         // Arrange
@@ -16,5 +16,5 @@ public class StudentTest
 
         // Assert
         expected.Should().Be(actual);
-    }
+    }*/
 }

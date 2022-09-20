@@ -8,12 +8,12 @@ public class ExtensionsTests
         // Arrange
         IEnumerable<int>[] listOfLists =
         {
-            new List<int>() { 1, 2, 3 },
+            new List<int>() { 1, 2, 3, 3 },
             new List<int>() { 4, 5, 6, 7 },
             new List<int>() { 8, 9 }
         };
 
-        var expected = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        var expected = new[] {1, 2, 3, 3, 4, 5, 6, 7, 8, 9};
 
         // Act
         var actual= Extensions.Flatten(listOfLists);
@@ -26,9 +26,9 @@ public class ExtensionsTests
     public void Divisible_Given_Array_Returns_List_Of_Numbers_Greater_Than_47_And_Divisible_By_7()
     {
         // Arrange
-        var data = new[] {1, 2, 7, 3, 50, 51, 52, 70};
+        var data = new[] {1, 2, 7, 3, 50, 51, 52, 70, 462};
 
-        var expected = new[] {70};
+        var expected = new[] {70, 462};
 
         // Act
         var actual= Extensions.Divisible(data);
