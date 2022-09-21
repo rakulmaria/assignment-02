@@ -1,6 +1,6 @@
-namespace StudentClassLibrary.Tests;
+namespace Assignment2;
 
-public class QueriesTests
+public class StudentTests
 {
     [Fact]
     public void Test1_New_Student_To_String()

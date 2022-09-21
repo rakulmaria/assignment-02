@@ -1,10 +1,10 @@
-﻿namespace StudentClassLibrary;
+﻿namespace Assignment2;
 
-public class Student
+public record ImmutableStudent
 {
     public int Id { get; init; }
-    public string GivenName { get; set; }
-    public string Surname { get; set; }
+    public string GivenName { get; init; }
+    public string Surname { get; init; }
     public enum _Status
     {
         New,
@@ -28,10 +28,10 @@ public class Student
            }
         }
      }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public DateTime GraduationDate { get; set; }
-    public Student(
+    public DateTime StartDate { get; init; }
+    public DateTime EndDate { get; init; }
+    public DateTime GraduationDate { get; init; }
+    public ImmutableStudent(
         int id,
         string givenName,
         string surname,

@@ -26,4 +26,10 @@ public class ExtensionsTests
         var text = ".Tests.dll (.NETCoreApp,Version=v6.0)Microsoft (R) Test Execution Command Line Tool Version";
         Assert.Equal(12,Extensions.WordCount(text));
     }
+    [Fact]
+    public void Leapyear_Return_leapyears()
+    {
+        var intlist = new int[] {4,400,1600,1800,2200,2000};
+        Assert.Equal(new List<int> {4,400,1600,2000},Extensions.Leapyear(intlist));
+    }
 }
