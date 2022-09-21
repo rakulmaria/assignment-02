@@ -1,69 +1,33 @@
-﻿namespace Assignment2;
+namespace Assignment2;
 
-public class Student
+public class Student 
 {
-    public int Id { get; init; }
-    public string GivenName { get; set; }
-    public string Surname { get; set; }
-    public enum _Status
+    public int id { get; init; }
+    public string name { get; set; } = string.Empty;
+    public string surname { get; set; } = string.Empty;
+    public Status status { get => calcStatus(); }
+    public DateTime startDate { get; set; }
+    public DateTime endDate { get; set; }
+    public DateTime graduationDate { get; set; }
+
+
+
+    public Status calcStatus() 
     {
-        New,
-        Active,
-        Dropout,
-        Graduated
-    };
-    public _Status Status { 
-        get { 
-           if (DateTime.Now >= GraduationDate && EndDate == GraduationDate){
-            return _Status.Graduated;
-           }
-           else if (DateTime.Now >= EndDate && EndDate < GraduationDate) {
-            return _Status.Dropout;
-           }
-           else if (DateTime.Now < GraduationDate && DateTime.Now < EndDate && StartDate < DateTime.Now ) {
-            return _Status.Active;
-           }
-           else {
-            return _Status.New;
-           }
-        }
-     }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public DateTime GraduationDate { get; set; }
-    public Student(
-        int id,
-        string givenName,
-        string surname,
-        DateTime startDate,
-        DateTime endDate,
-        DateTime graduationDate
-    )
-    {
-        this.Id = id;
-        this.GivenName = givenName;
-        this.Surname = surname;
-        this.StartDate = startDate;
-        this.EndDate = endDate;
-        this.GraduationDate = graduationDate;
+        if(startDate == DateTime.Today) return Status.New;
+        if(startDate < DateTime.Today) return Status.Active;
+        if(startDate < DateTime.Today && endDate <= DateTime.Today) return Status.Dropout;
+        if(startDate < DateTime.Today && endDate <= DateTime.Today && graduationDate <= DateTime.Today) return Status.Graduated;
+        else return Status.New;
     }
     
 
-    public override string ToString()
+    public override string ToString() 
     {
-        return "Id: "
-            + Id
-            + ", Givenname: "
-            + GivenName
-            + ", Surname: "
-            + Surname
-            + ", Status: "
-            + Status
-            + ", Start date: "
-            + StartDate
-            + ", End date: "
-            + EndDate
-            + ", Graduation date: "
-            + GraduationDate;
+        return "Id: " + id + " Name: " + name + " Surname: " + surname + " Status: " + 
+            status + " Start date: " + startDate + " End date: " + 
+            endDate + " Graduation date: " + graduationDate;
     }
+
 }
+
