@@ -1,4 +1,5 @@
 namespace Assignment2;
+using System.Linq;
 
 public class Queries
 {
