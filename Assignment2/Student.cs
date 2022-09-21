@@ -3,8 +3,8 @@ namespace Assignment2;
 public class Student 
 {
     public int id { get; init; }
-    public string name { get; set; } = string.Empty!;
-    public string surname { get; set; } = string.Empty!;
+    public string name { get; set; } = string.Empty;
+    public string surname { get; set; } = string.Empty;
     public Status status { get => calcStatus(); }
     public DateTime startDate { get; set; }
     public DateTime endDate { get; set; }
@@ -15,9 +15,9 @@ public class Student
     public Status calcStatus() 
     {
         if(startDate == DateTime.Today) return Status.New;
-        if(startDate <= DateTime.Today) return Status.Active;
-        if(startDate <= DateTime.Today && endDate <= DateTime.Today) return Status.Dropout;
-        if(startDate <= DateTime.Today && endDate <= DateTime.Today && graduationDate <= DateTime.Today) return Status.Graduated;
+        if(startDate < DateTime.Today) return Status.Active;
+        if(startDate < DateTime.Today && endDate <= DateTime.Today) return Status.Dropout;
+        if(startDate < DateTime.Today && endDate <= DateTime.Today && graduationDate <= DateTime.Today) return Status.Graduated;
         else return Status.New;
     }
     
