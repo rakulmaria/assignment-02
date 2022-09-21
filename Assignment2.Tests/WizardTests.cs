@@ -7,6 +7,7 @@ public class WizardTests
     {
         var wizards = WizardCollection.Create();
 
+        Assert.NotEqual(2, wizards.Count());
         Assert.Equal(12, wizards.Count());
     }
 
