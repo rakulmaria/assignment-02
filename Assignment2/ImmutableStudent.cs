@@ -5,47 +5,26 @@ public record ImmutableStudent
     public int Id { get; init; }
     public string GivenName { get; init; }
     public string Surname { get; init; }
-    public enum _Status
+    public Status _Status { get => calcStatus(); }
+    public enum Status
     {
         New,
         Active,
         Dropout,
         Graduated
     };
-    public _Status Status { 
-        get { 
-           if (DateTime.Now >= GraduationDate && EndDate == GraduationDate){
-            return _Status.Graduated;
-           }
-           else if (DateTime.Now >= EndDate && EndDate < GraduationDate) {
-            return _Status.Dropout;
-           }
-           else if (DateTime.Now < GraduationDate && DateTime.Now < EndDate && StartDate < DateTime.Now ) {
-            return _Status.Active;
-           }
-           else {
-            return _Status.New;
-           }
-        }
-     }
+    
     public DateTime StartDate { get; init; }
     public DateTime EndDate { get; init; }
     public DateTime GraduationDate { get; init; }
-    public ImmutableStudent(
-        int id,
-        string givenName,
-        string surname,
-        DateTime startDate,
-        DateTime endDate,
-        DateTime graduationDate
-    )
+    
+    public Status calcStatus() 
     {
-        this.Id = id;
-        this.GivenName = givenName;
-        this.Surname = surname;
-        this.StartDate = startDate;
-        this.EndDate = endDate;
-        this.GraduationDate = graduationDate;
+        if(StartDate == DateTime.Today) return Status.New;
+        if(StartDate < DateTime.Today) return Status.Active;
+        if(StartDate < DateTime.Today && EndDate <= DateTime.Today) return Status.Dropout;
+        if(StartDate < DateTime.Today && EndDate <= DateTime.Today && GraduationDate <= DateTime.Today) return Status.Graduated;
+        else return Status.New;
     }
     
 
@@ -58,7 +37,7 @@ public record ImmutableStudent
             + ", Surname: "
             + Surname
             + ", Status: "
-            + Status
+            + _Status
             + ", Start date: "
             + StartDate
             + ", End date: "

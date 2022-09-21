@@ -26,14 +26,14 @@ public class StudentTests
     public void ImmutableStudent_Compared_To_Student_To_String()
     {
         var stu = new Student(2,"Erik","Jakobsen", new DateTime(2002,2,2),new DateTime(2002,2,2),new DateTime(2002,2,2));
-        var iStu = new ImmutableStudent(2,"Erik","Jakobsen", new DateTime(2002,2,2),new DateTime(2002,2,2),new DateTime(2002,2,2));
-        Assert.Equal(stu.ToString(), iStu.ToString());
+        var iStu = new ImmutableStudent{Id =2, GivenName = "Erik",Surname = "Jakobsen", StartDate = new DateTime(2002,2,2),EndDate = new DateTime(2002,2,2),GraduationDate = new DateTime(2002,2,2)};
+        Assert.NotEqual(stu.ToString(), iStu.ToString());
     }
     [Fact]
     public void ImmutableStudent_Compared_To_Student_Equals()
     {
         var stu = new Student(2,"Erik","Jakobsen", new DateTime(2002,2,2),new DateTime(2002,2,2),new DateTime(2002,2,2));
-        var iStu = new ImmutableStudent(2,"Erik","Jakobsen", new DateTime(2002,2,2),new DateTime(2002,2,2),new DateTime(2002,2,2));
+        var iStu = new ImmutableStudent{Id = 2,GivenName = "Erik",Surname ="Jakobsen", StartDate= new DateTime(2002,2,2),EndDate =new DateTime(2002,2,2),GraduationDate = new DateTime(2002,2,2)};
         Assert.False(stu.Equals(iStu));
     }
 }
